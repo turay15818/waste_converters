@@ -1,0 +1,411 @@
+      body: Center(
+        child: Column(
+        
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('signed in as: ' + user.email!),
+            MaterialButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                color: Colors.deepPurple[500],
+                child: Text('Sign Out: ' + user.email!)),
+            SizedBox(height: 40),
+            Text(
+              "Flutter is not a child paly",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            MaterialButton(
+              color: Colors.red,
+              onPressed: () {},
+              child: Text(
+                'Subscribe',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      
+      
+      
+      body: Center(child: _HomePage.elementAt(_selectedIndex),
+)
+
+
+
+
+
+
+
+
+
+
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser!;
+  int _selectedIndex = 0;
+  static final List<Widget> _HomePage = <Widget>[
+  // HomePage(),
+  Dashboard(),
+  Setting(),
+  Message()
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    
+      // appBar: AppBar(
+      //   title: Text(
+      //     "Homepage",
+      //   ),
+      // ),
+backgroundColor: Colors.deepPurpleAccent,
+      bottomNavigationBar: Container(
+        color: Colors.deepPurpleAccent,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          child: GNav(
+              backgroundColor: Colors.deepPurpleAccent,
+              tabBackgroundColor: Colors.indigo,
+              color: Colors.black,
+              activeColor: Colors.amberAccent,
+              padding: EdgeInsets.all(16),
+              gap: 10,
+              iconSize: 30,
+              
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              tabs: [
+                GButton(
+                  icon: Icons.home,
+                  iconSize: 35,
+                  backgroundColor: Colors.white,
+                  iconActiveColor: Colors.greenAccent,
+                  iconColor: Colors.amberAccent,
+                  text: ('Home'),
+                ), 
+                GButton(
+                  icon: Icons.dashboard,
+                  iconSize: 35,
+                  backgroundColor: Colors.white,
+                  iconColor: Colors.blueGrey,
+                  iconActiveColor: Colors.greenAccent,
+                  text: ('Dashboard'),
+                ),
+                GButton(
+                  icon: Icons.message_sharp,
+                  iconSize: 35,
+                  backgroundColor: Colors.white,
+                  iconActiveColor: Colors.greenAccent,
+                  iconColor: Colors.red,
+                  text: ('Messages'),
+                ),
+                GButton(
+                  icon: Icons.settings,
+                  iconSize: 35,
+                  backgroundColor: Color(0xFF4756DF),
+                  iconActiveColor: Color(0xFFA716DA),
+                  iconColor: Colors.black,
+                  text: ('Setting'),
+                ),
+              
+              
+              
+              ]),
+        ),
+      ),
+
+      //Drawer NAvigator
+      drawer: Drawer(
+        backgroundColor: Colors.lightBlue,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('Musa Turay'),
+              accountEmail: Text(user.email!),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/images/google1.png',
+                    height: 90,
+                    width: 90,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.deepOrangeAccent,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/google2.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+            //drawer items
+            ListTile(
+              leading: Icon(
+                Icons.dashboard_customize,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Dashboard',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.message,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Notification',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.deepPurpleAccent,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.policy,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Policy',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.deepPurpleAccent,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Setting',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.deepPurpleAccent,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.share,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Share',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.deepPurpleAccent,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            Column(
+              children: [
+                ListTile(
+                  leading: Container(
+                      child: Icon(
+                    Icons.social_distance,
+                    color: Colors.deepPurpleAccent,
+                    size: 40,
+                  )),
+                  title: Text('Follow Us',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.deepPurpleAccent,
+                        fontWeight: FontWeight.w900,
+                      )),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return ForgotPasswordPage();
+                    }));
+                  },
+                ),
+              ],
+            ),
+
+            ListTile(
+              leading: Icon(
+                Icons.toggle_on_outlined,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text(
+                'Theme',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.indigoAccent,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ForgotPasswordPage();
+                }));
+              },
+            ),
+
+            Divider(color: Colors.amberAccent),
+            ListTile(
+              leading: Icon(
+                Icons.exit_to_app_sharp,
+                color: Colors.deepPurpleAccent,
+                size: 40,
+              ),
+              title: Text('Logout',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.lime,
+                    fontWeight: FontWeight.w900,
+                  )),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Login(
+                    showRegisterPage: () {},
+                  );
+                }));
+              },
+            ),
+          ],
+        ),
+      ),
+
+      //Body
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('signed in as: ' + user.email!),
+            MaterialButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                color: Colors.deepPurple[500],
+                child: Text('Sign Out: ' + user.email!)),
+            SizedBox(height: 40),
+            Text(
+              "Flutter is not a child paly",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            MaterialButton(
+              color: Colors.red,
+              onPressed: () {},
+              child: Text(
+                'Subscribe',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ],
+        ),
+        
+        
+        
+      ),
+    );
+  }
+}
+
+
+
+
+
+ child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('signed in as: ' + user.email!),
+            
+           
+          ],
+        ),
+        
+        
+        
+        
+        keytool -list -v \-alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
+        keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
+        
+        
+         SHA1: 56:B8:28:8A:9F:CA:FE:79:B0:E9:39:80:FD:C5:13:CA:76:8B:0D:10
+         SHA256: 43:EA:FD:82:32:D4:CD:F6:FC:81:20:60:86:37:94:8A:09:DF:F3:CD:2E:8D:BC:7F:05:7D:26:66:4D:F2:4F:4B

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "294849343264",
+    "project_id": "myfirstproject-19cf1",
+    "storage_bucket": "myfirstproject-19cf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294849343264:android:4fdced237f5b9600ab7145",
+        "android_client_info": {
+          "package_name": "com.example.waste_converters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294849343264-a49jevjrm295oc99dh58dnf5ks9vaibt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0WKkB7K-fcEVE4UoA9RY0th6r-R-SQJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294849343264-a49jevjrm295oc99dh58dnf5ks9vaibt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
